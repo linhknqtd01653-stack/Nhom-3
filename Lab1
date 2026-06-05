@@ -1,1 +1,62 @@
+HỆ THỐNG QUẢN LÝ CƠ SỞ HẠ TẦNG
+
+1. Tên ứng dụng / dự án
+Hệ thống Quản lý Cơ sở Hạ tầng FPT Polytechnic Đà Nẵng (FPT Poly IMS)
+
+2. Mô tả vấn đề
+Đầu năm 2026, FPT Polytechnic Đà Nẵng đưa vào vận hành cơ sở mới với quy mô lớn và số lượng thiết bị tăng đáng kể. Tuy nhiên, phương thức quản lý truyền thống không còn phù hợp, dẫn đến quá tải trong kiểm kê, dễ xảy ra sai sót và chậm trễ trong việc xử lý sự cố.
+Việc thiếu một hệ thống quản lý tập trung khiến dữ liệu bị phân tán, khó theo dõi tình trạng thiết bị theo thời gian.
+Do đó, cần xây dựng một hệ thống quản lý cơ sở hạ tầng sử dụng mã định danh QR nhằm tối ưu hóa việc quản lý, kiểm soát và vận hành thiết bị.
+
+3. Phạm vi & Mục tiêu
+Phạm vi
+Áp dụng tại một cơ sở FPT Polytechnic Đà Nẵng 
+Quản lý các loại tài sản: máy tính, máy chiếu, bàn ghế, điều hòa 
+Sử dụng mã QR/Asset Code để nhận diện thiết bị 
+Theo dõi vị trí thiết bị theo hình thức cập nhật thủ công 
+Có thể mở rộng tích hợp GPS/RFID trong tương lai [GIẢ ĐỊNH] 
+Mục tiêu
+Kiểm soát 100% biến động thiết bị 
+Tự động hóa quy trình mượn/trả (kéo thả + phê duyệt nhiều cấp) 
+Theo dõi trạng thái và lịch sử sử dụng 
+Hỗ trợ scan QR qua web + camera 
+Theo dõi vị trí thiết bị 
+Cung cấp dashboard báo cáo trực quan (biểu đồ) 
+
+4. Chức năng chính
+Quản lý danh mục thiết bị (thêm, sửa, phân loại theo phòng/khu vực) 
+Quản lý mã QR/Asset Code cho từng thiết bị 
+Theo dõi trạng thái thiết bị (đang sử dụng, hỏng, bảo trì) 
+Quản lý mượn/trả thiết bị (kéo thả + phê duyệt nhiều cấp) 
+Phân quyền người dùng chi tiết theo vai trò 
+Theo dõi vị trí và lịch sử di chuyển thiết bị (cập nhật thủ công) 
+Thống kê & báo cáo (biểu đồ, tần suất sử dụng, thiết bị lỗi) 
+
+5. Stakeholder
+STT
+Stakeholder
+Vai trò
+Nhu cầu / Tác động
+1
+Sinh viên / Giảng viên
+Người sử dụng
+Mượn/trả nhanh, báo cáo sự cố bằng QR
+2
+Nhân viên kỹ thuật
+Vận hành & bảo trì
+Nhận yêu cầu, xử lý sự cố, cập nhật trạng thái
+3
+Quản lý cơ sở vật chất
+Quản lý tài sản
+Theo dõi thiết bị, kiểm soát biến động, lập kế hoạch
+4
+Quản trị viên hệ thống
+Quản lý hệ thống
+Phân quyền, bảo mật, quản lý dữ liệu
+5
+Ban giám hiệu / Ban quản lý
+Ra quyết định
+Xem báo cáo tổng hợp, đánh giá hiệu quả sử dụng
+
+
 
