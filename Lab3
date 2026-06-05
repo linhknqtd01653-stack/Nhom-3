@@ -1,1 +1,383 @@
+SRS – FPT Poly IMS (IEEE Style)
+
+PHẦN 1: GIỚI THIỆU CHUNG
+1.1 Mục đích tài liệu
+Tài liệu SRS (Software Requirements Specification) này được xây dựng nhằm mô tả chi tiết các yêu cầu chức năng và phi chức năng của hệ thống FPT Poly IMS – Hệ thống quản lý cơ sở vật chất bằng QR Code tại FPT Polytechnic Đà Nẵng.
+Tài liệu này dành cho:
+Nhóm phát triển hệ thống (Dev Team)
+Nhóm kiểm thử (QA)
+Quản lý cơ sở vật chất
+Ban giám hiệu / khách hàng sử dụng hệ thống
+Mục tiêu của tài liệu:
+Chuẩn hóa yêu cầu hệ thống theo chuẩn IEEE
+Làm cơ sở cho thiết kế, phát triển và kiểm thử
+Giảm hiểu nhầm giữa stakeholder và đội phát triển
+Làm căn cứ nghiệm thu hệ thống
+
+1.2 Phạm vi hệ thống
+Hệ thống FPT Poly IMS là một web quản trị nội bộ hỗ trợ quản lý tài sản tại FPT Polytechnic Đà Nẵng.
+Hệ thống cung cấp các chức năng chính:
+Quản lý danh mục và thông tin thiết bị
+Gán và quét mã QR/Asset Code để định danh thiết bị
+Quản lý quy trình mượn – trả thiết bị theo luồng phê duyệt
+Theo dõi trạng thái, vị trí và lịch sử thiết bị
+Quản lý sự cố và bảo trì thiết bị
+Cung cấp báo cáo và dashboard thống kê trực quan
+Phạm vi không bao gồm:
+Không tích hợp GPS/RFID trong phiên bản hiện tại
+Không quản lý tài sản ngoài phạm vi FPT Polytechnic Đà Nẵng
+Không hỗ trợ ứng dụng mobile native (chỉ web)
+Không tích hợp hệ thống kế toán hoặc ERP
+Không xử lý thanh toán hoặc chi phí tài sản
+
+1.3 Định nghĩa & Thuật ngữ
+Thuật ngữ
+Giải thích
+SRS
+Software Requirements Specification – Tài liệu đặc tả yêu cầu phần mềm
+FR
+Functional Requirement – Yêu cầu chức năng
+NFR
+Non-Functional Requirement – Yêu cầu phi chức năng
+Actor
+Người dùng hoặc hệ thống tương tác với hệ thống
+QR Code
+Mã phản hồi nhanh dùng để định danh thiết bị
+Asset
+Tài sản/thiết bị trong hệ thống
+Dashboard
+Giao diện hiển thị thống kê trực quan
+Workflow
+Luồng xử lý nghiệp vụ (mượn/trả/phê duyệt)
+
+
+1.4 Tài liệu tham chiếu
+LAB 1 – Phân tích bài toán và Stakeholder
+LAB 2 – Functional Requirements, Non-Functional Requirements, Business Process
+
+PHẦN 2: TỔNG QUAN HỆ THỐNG
+2.1 Bối cảnh sản phẩm
+Hệ thống FPT Poly IMS được xây dựng nhằm thay thế phương pháp quản lý tài sản thủ công (Excel, giấy tờ, ghi chép rời rạc) đang được sử dụng tại FPT Polytechnic Đà Nẵng.
+Hệ thống hoạt động như một web application nội bộ độc lập, phục vụ quản lý tập trung tài sản trong một cơ sở.
+Không yêu cầu tích hợp với hệ thống bên ngoài trong phiên bản hiện tại.
+
+2.2 Chức năng chính
+Hệ thống bao gồm các nhóm chức năng lớn:
+Quản lý thiết bị và tài sản (Asset Management)
+Quản lý QR Code và định danh thiết bị
+Quản lý mượn – trả thiết bị theo quy trình phê duyệt
+Quản lý sự cố và bảo trì thiết bị
+Báo cáo, thống kê và dashboard quản trị
+
+2.3 Đặc điểm người dùng
+Vai trò
+Mô tả
+Mức độ kỹ thuật
+Sinh viên / Giảng viên
+Người gửi yêu cầu mượn/trả thiết bị, báo sự cố
+Thấp
+Nhân viên kỹ thuật
+Xử lý sự cố, bàn giao, cập nhật trạng thái thiết bị
+Trung bình
+Quản lý cơ sở vật chất
+Phê duyệt yêu cầu, quản lý tài sản
+Trung bình
+Quản trị viên hệ thống
+Quản lý hệ thống, phân quyền
+Cao
+Ban giám hiệu
+Xem báo cáo, dashboard tổng hợp
+Thấp
+
+
+2.4 Ràng buộc hệ thống (Constraints)
+Hệ thống chỉ sử dụng trong nội bộ FPT Polytechnic Đà Nẵng
+Hoạt động trong môi trường web, không có mobile app native
+Giao diện ưu tiên tiếng Việt [GIẢ ĐỊNH]
+Phụ thuộc vào kết nối mạng nội bộ (LAN/Internet trường)
+Không tích hợp hệ thống GPS/RFID trong phiên bản hiện tại
+Quy trình phê duyệt phải tuân theo mô hình nhiều cấp đã định nghĩa
+
+2.5 Giả định & Phụ thuộc
+Người dùng có thiết bị có camera để quét QR
+Hệ thống được vận hành trong môi trường mạng ổn định
+Dữ liệu thiết bị được nhập đầy đủ và chính xác ban đầu
+Quy trình nghiệp vụ mượn/trả không thay đổi trong giai đoạn triển khai
+Tài khoản người dùng được cấp bởi admin hệ thống
+[GIẢ ĐỊNH] Hệ thống có đủ hạ tầng để xử lý đồng thời nhiều người dùng
+
+PHẦN 3: YÊU CẦU CHI TIẾT
+
+3.1 Functional Requirements
+ID
+Mô tả
+Actor
+Độ ưu tiên
+Ghi chú
+FR01
+Quản lý danh mục thiết bị (thêm, sửa, xóa)
+Quản trị viên
+Cao
+Kiểm tra trùng mã thiết bị trước khi lưu
+FR02
+Phân loại thiết bị theo phòng/khu vực
+Quản trị viên
+Cao
+Thiết bị phải thuộc 1 phòng hợp lệ
+FR03
+Quản lý mã QR/Asset Code cho từng thiết bị
+Quản trị viên
+Cao
+QR phải duy nhất cho mỗi thiết bị
+FR04
+Hỗ trợ quét QR bằng web và camera
+Sinh viên / Giảng viên
+Cao
+Chỉ hoạt động khi user cấp quyền camera
+FR05
+Theo dõi trạng thái thiết bị
+Nhân viên kỹ thuật
+Cao
+Trạng thái hợp lệ: Available / In use / Maintenance / Broken
+FR06
+Quản lý yêu cầu mượn thiết bị
+Sinh viên / Giảng viên
+Cao
+Kiểm tra thiết bị còn khả dụng trước khi gửi yêu cầu
+FR07
+Quản lý yêu cầu trả thiết bị
+Sinh viên / Giảng viên
+Cao
+Không cho trả nếu chưa có lịch sử mượn
+FR08
+Phê duyệt nhiều cấp
+Quản lý CSVC / Kỹ thuật
+Cao
+Theo đúng luồng: Người dùng → CSVC → Kỹ thuật
+FR09
+Phân quyền người dùng theo vai trò
+Quản trị viên
+Cao
+Role-based access control
+FR10
+Theo dõi vị trí thiết bị
+Nhân viên kỹ thuật
+Cao
+Cập nhật thủ công, có lịch sử thay đổi
+FR11
+Lưu lịch sử di chuyển thiết bị
+Hệ thống
+Trung bình
+Log đầy đủ thời gian và người thực hiện
+FR12
+Lưu lịch sử sử dụng thiết bị
+Hệ thống
+Cao
+Gắn với từng lần mượn/trả
+FR13
+Báo cáo và thống kê thiết bị
+Quản lý CSVC
+Cao
+Dữ liệu theo thời gian thực
+FR14
+Dashboard trực quan
+Ban giám hiệu
+Cao
+Biểu đồ trạng thái thiết bị
+FR15
+Thống kê tần suất sử dụng thiết bị
+Quản lý CSVC
+Trung bình
+Tính theo số lần mượn
+
+
+3.2 Non-Functional Requirements
+ID
+Mô tả
+Độ ưu tiên
+Tiêu chí đo lường
+NFR01
+Hệ thống phản hồi thao tác ≤ 3 giây
+Cao
+≤ 3s với 10–50 user đồng thời
+NFR02
+Xác thực và phân quyền người dùng
+Cao
+100% request phải qua auth
+NFR03
+Giao diện dễ sử dụng
+Cao
+≥ 80% user hoàn thành thao tác không cần hướng dẫn
+NFR04
+Hệ thống ổn định giờ hành chính
+Cao
+Uptime ≥ 99% trong giờ 7h–18h
+NFR05
+Hỗ trợ trình duyệt phổ biến
+Cao
+Chrome, Edge, Firefox phiên bản mới
+NFR06
+Hỗ trợ quét QR bằng camera
+Cao
+Hoạt động trên ≥ 90% thiết bị có camera
+
+
+3.3 External Interface Requirements
+1. Giao diện người dùng
+Màn hình đăng nhập
+Nhập tài khoản, mật khẩu
+Xác thực người dùng
+Trang dashboard
+Hiển thị tổng quan thiết bị
+Biểu đồ trạng thái, cảnh báo
+Màn hình quản lý thiết bị
+Danh sách thiết bị
+Thêm/sửa/xóa thiết bị
+Màn hình mượn/trả thiết bị
+Tạo yêu cầu mượn
+Xác nhận trả thiết bị
+Màn hình quét QR
+Mở camera
+Hiển thị thông tin thiết bị
+
+2. Giao diện phần cứng
+Máy tính để bàn/laptop
+Thiết bị có camera (điện thoại hoặc laptop)
+Hệ thống mạng LAN hoặc Internet nội bộ
+
+3. Giao diện phần mềm
+Trình duyệt web (Chrome/Edge/Firefox)
+Import/Export dữ liệu Excel [GIẢ ĐỊNH]
+Hệ thống email/notification nội bộ [GIẢ ĐỊNH]
+Danh sách màn hình giao diện chính
+
+1. Màn hình Đăng nhập (Login Screen)
+Actor sử dụng:
+Tất cả người dùng (Sinh viên/Giảng viên, Nhân viên kỹ thuật, Quản lý CSVC, Admin, Ban giám hiệu)
+Chức năng hiển thị chính:
+Nhập tài khoản và mật khẩu
+Xác thực người dùng
+Điều hướng vào hệ thống theo vai trò (role-based redirect)
+FR liên quan:
+FR09 – Phân quyền người dùng theo vai trò
+
+2. Màn hình Dashboard tổng quan
+Actor sử dụng:
+Quản lý cơ sở vật chất
+Ban giám hiệu
+Quản trị viên hệ thống
+Chức năng hiển thị chính:
+Tổng số thiết bị
+Tình trạng thiết bị (đang dùng / hỏng / bảo trì)
+Biểu đồ thống kê sử dụng thiết bị
+Cảnh báo thiết bị lỗi hoặc trả trễ hạn
+Thống kê nhanh tần suất sử dụng
+FR liên quan:
+FR13 – Báo cáo và thống kê thiết bị
+FR14 – Dashboard trực quan
+FR15 – Thống kê tần suất sử dụng thiết bị
+FR16 – Thống kê thiết bị lỗi/hỏng
+FR19 – Cảnh báo trả trễ hạn
+
+3. Màn hình Quản lý thiết bị (Asset Management)
+Actor sử dụng:
+Quản trị viên hệ thống
+Quản lý cơ sở vật chất
+Chức năng hiển thị chính:
+Danh sách thiết bị
+Thêm / sửa / xóa thiết bị
+Gán phòng/khu vực cho thiết bị
+Gán QR/Asset Code
+Cập nhật trạng thái thiết bị
+FR liên quan:
+FR01 – Quản lý danh mục thiết bị
+FR02 – Phân loại theo phòng/khu vực
+FR03 – Quản lý QR/Asset Code
+FR05 – Theo dõi trạng thái thiết bị
+FR10 – Theo dõi vị trí thiết bị
+
+4. Màn hình Quét QR & Tra cứu thiết bị
+Actor sử dụng:
+Sinh viên
+Giảng viên
+Nhân viên kỹ thuật
+Chức năng hiển thị chính:
+Quét QR bằng camera web
+Hiển thị thông tin thiết bị
+Trạng thái thiết bị hiện tại
+Lịch sử sử dụng cơ bản
+Truy cập nhanh chức năng báo sự cố
+FR liên quan:
+FR04 – Quét QR bằng web/camera
+FR05 – Theo dõi trạng thái thiết bị
+FR12 – Lưu lịch sử sử dụng thiết bị
+FR17 – Báo cáo sự cố bằng QR
+
+5. Màn hình Quản lý mượn thiết bị
+Actor sử dụng:
+Sinh viên
+Giảng viên
+Quản lý CSVC
+Chức năng hiển thị chính:
+Tạo yêu cầu mượn thiết bị
+Danh sách yêu cầu mượn
+Trạng thái phê duyệt (chờ duyệt / đã duyệt / từ chối)
+Kiểm tra điều kiện thiết bị trước khi mượn
+Lịch sử mượn
+FR liên quan:
+FR06 – Quản lý yêu cầu mượn thiết bị
+FR08 – Phê duyệt nhiều cấp
+FR12 – Lưu lịch sử sử dụng thiết bị
+
+6. Màn hình Quản lý trả thiết bị
+Actor sử dụng:
+Sinh viên
+Giảng viên
+Nhân viên kỹ thuật
+Chức năng hiển thị chính:
+Gửi yêu cầu trả thiết bị
+Xác nhận tình trạng thiết bị khi trả
+Cập nhật trạng thái thiết bị sau khi trả
+Ghi nhận lịch sử trả
+FR liên quan:
+FR07 – Quản lý yêu cầu trả thiết bị
+FR05 – Theo dõi trạng thái thiết bị
+FR12 – Lưu lịch sử sử dụng thiết bị
+
+7. Màn hình Quản lý sự cố & bảo trì
+Actor sử dụng:
+Sinh viên / Giảng viên
+Nhân viên kỹ thuật
+Quản lý CSVC
+Chức năng hiển thị chính:
+Gửi báo cáo sự cố qua QR
+Danh sách sự cố cần xử lý
+Cập nhật trạng thái xử lý (đang xử lý / hoàn tất)
+Lịch sử bảo trì thiết bị
+FR liên quan:
+FR17 – Báo cáo sự cố thiết bị bằng QR
+FR05 – Theo dõi trạng thái thiết bị
+FR11 – Lưu lịch sử di chuyển thiết bị
+
+8. Màn hình Quản trị hệ thống & phân quyền
+Actor sử dụng:
+Quản trị viên hệ thống
+Chức năng hiển thị chính:
+Quản lý tài khoản người dùng
+Gán vai trò (role)
+Phân quyền truy cập chức năng
+Theo dõi hoạt động hệ thống (log cơ bản)
+FR liên quan:
+FR09 – Phân quyền người dùng theo vai trò
+FR18 – Thông báo trạng thái yêu cầu
+FR11 – Lưu lịch sử hoạt động
+
+TÓM TẮT LOGIC PHÂN NHÓM MÀN HÌNH
+Các màn hình trên được nhóm theo 4 khối nghiệp vụ chính:
+Quản lý tài sản (Asset)
+Quy trình mượn/trả (Workflow)
+Quét QR & tra cứu nhanh
+Báo cáo & quản trị hệ thống
+
+
 
