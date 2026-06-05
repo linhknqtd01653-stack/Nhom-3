@@ -1,1 +1,175 @@
+LAB 2 – THU THẬP & PHÂN TÍCH YÊU CẦU PHẦN MỀM
+Dự án: Hệ thống Quản lý Cơ sở Hạ tầng FPT Polytechnic Đà Nẵng (FPT Poly IMS)
+1. Tóm tắt bài toán
+FPT Polytechnic Đà Nẵng đưa vào vận hành cơ sở mới với số lượng phòng học và thiết bị tăng mạnh, dẫn đến khó khăn trong việc kiểm kê, quản lý và theo dõi tình trạng tài sản. Phương pháp quản lý thủ công hiện tại dễ xảy ra sai sót, thất lạc dữ liệu và chậm xử lý sự cố.
+
+Hệ thống FPT Poly IMS được đề xuất nhằm quản lý tập trung các thiết bị cơ sở hạ tầng thông qua mã QR/Asset Code, hỗ trợ theo dõi trạng thái, vị trí, lịch sử sử dụng và quy trình mượn/trả thiết bị.
+
+Hệ thống hướng đến mục tiêu tự động hóa quản lý tài sản, nâng cao hiệu quả vận hành và hỗ trợ báo cáo trực quan cho nhà trường. Có khả năng mở rộng tích hợp GPS/RFID trong tương lai [GIẢ ĐỊNH].
+2. Kỹ thuật thu thập yêu cầu
+2.1 Bảng phương pháp thu thập yêu cầu
+STT
+Kỹ thuật
+Mô tả ngắn
+1
+Phỏng vấn (Interview)
+Trao đổi trực tiếp với nhân viên kỹ thuật, quản lý cơ sở vật chất để thu thập nhu cầu.
+2
+Khảo sát bằng Google Form
+Thu thập ý kiến sinh viên và giảng viên về nhu cầu sử dụng hệ thống.
+3
+Quan sát thực tế
+Theo dõi trực tiếp quy trình kiểm kê và xử lý thiết bị. [CẦN NHÓM THỰC HIỆN]
+4
+Phân tích tài liệu hiện có
+Xem xét biểu mẫu kiểm kê và quy trình quản lý hiện tại.
+
+2.2 Tài liệu minh chứng
+MẪU THAM KHẢO – Câu hỏi phỏng vấn Stakeholder chính
+Hiện tại việc quản lý thiết bị đang được thực hiện theo quy trình như thế nào?
+Những khó khăn lớn nhất khi kiểm kê và theo dõi thiết bị là gì?
+Thiết bị thường gặp những sự cố nào và cách xử lý hiện tại ra sao?
+Quy trình mượn/trả thiết bị hiện nay có những bước nào?
+Nhà trường có nhu cầu theo dõi lịch sử sử dụng hoặc di chuyển thiết bị không?
+Những loại báo cáo nào cần được hệ thống hỗ trợ?
+Anh/chị mong muốn hệ thống mới cải thiện vấn đề gì quan trọng nhất?
+Đây là MẪU THAM KHẢO, nhóm có thể điều chỉnh theo thực tế khảo sát.
+MẪU THAM KHẢO – Google Form khảo sát người dùng cuối
+Bạn có thường xuyên mượn thiết bị hoặc sử dụng phòng học có thiết bị hỗ trợ không?
+Bạn từng gặp vấn đề nào khi sử dụng thiết bị?
+Bạn có mong muốn quét QR để xem thông tin thiết bị không?
+Theo bạn, việc báo cáo sự cố bằng QR có thuận tiện không?
+Bạn mong muốn hệ thống hỗ trợ chức năng nào nhất?
+Bạn đánh giá mức độ cần thiết của hệ thống quản lý thiết bị là gì?
+Ý kiến đóng góp khác.
+Đây là MẪU THAM KHẢO, nhóm có thể triển khai thực tế bằng Google Form. [CẦN NHÓM THỰC HIỆN]
+3. Bảng yêu cầu phần mềm
+3.1 Functional Requirements (FR)
+ID
+Mô tả
+Độ ưu tiên
+Ghi chú
+FR01
+Thêm mới thiết bị
+Cao
+
+
+FR02
+Chỉnh sửa thông tin thiết bị
+Cao
+
+
+FR03
+Phân loại thiết bị theo phòng/khu vực
+Cao
+
+
+FR04
+Quản lý mã QR/Asset Code
+Cao
+
+
+FR05
+Quét QR để xem thông tin thiết bị
+Cao
+
+
+FR06
+Cập nhật trạng thái thiết bị
+Cao
+
+
+FR07
+Hỗ trợ quy trình mượn thiết bị
+Cao
+
+
+FR08
+Hỗ trợ quy trình trả thiết bị
+Cao
+
+
+FR09
+Phê duyệt nhiều cấp cho yêu cầu mượn/trả
+Trung bình
+[CẦN XÁC NHẬN]
+FR10
+Phân quyền người dùng theo vai trò
+Cao
+
+
+FR11
+Cập nhật vị trí thiết bị thủ công
+Trung bình
+
+
+FR12
+Lưu lịch sử di chuyển và sử dụng thiết bị
+Trung bình
+
+
+FR13
+Báo cáo và thống kê dạng biểu đồ
+Cao
+
+
+FR14
+Thống kê tần suất sử dụng thiết bị
+Trung bình
+
+
+FR15
+Thống kê thiết bị lỗi hoặc bảo trì
+Cao
+
+
+
+3.2 Non-Functional Requirements (NFR)
+ID
+Mô tả
+Độ ưu tiên
+Ghi chú
+NFR01
+Hệ thống phản hồi thao tác nhanh
+Cao
+[CẦN XÁC NHẬN]
+NFR02
+Yêu cầu đăng nhập cho chức năng quản trị
+Cao
+
+
+NFR03
+Phân quyền truy cập theo vai trò
+Cao
+
+
+NFR04
+Hoạt động trên các trình duyệt web phổ biến
+Cao
+
+
+NFR05
+Hỗ trợ camera để quét mã QR
+Cao
+
+
+NFR06
+Dữ liệu được lưu trữ ổn định
+Cao
+
+
+NFR07
+Giao diện dễ sử dụng
+Trung bình
+
+
+NFR08
+Có thể mở rộng tích hợp GPS/RFID trong tương lai
+Thấp
+[GIẢ ĐỊNH]
+
+Câu hỏi để hiệu chỉnh LAB 2
+Nhóm có muốn bổ sung chức năng “báo cáo sự cố thiết bị bằng QR” thành Functional Requirement riêng không?
+Quy trình phê duyệt mượn/trả hiện dự kiến gồm bao nhiêu cấp?
+Nhóm muốn hệ thống chỉ dùng nội bộ web hay có định hướng mở rộng sang mobile trong tương lai [GIẢ ĐỊNH]?
 
